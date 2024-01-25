@@ -1,3 +1,5 @@
+import ru.netology.stats.Stats.services.StatsService;
+
 import java.util.Arrays;
 
 public class Main {
@@ -9,8 +11,10 @@ public class Main {
 
         System.out.println(Arrays.toString(arr));
 
-
+        // 180 "сумма всех продаж за 12 месяцев";
+        // 15 "средняя сумма продаж в месяц";
         // 9 " номер месяца, в котором был минимум продаж";
         // 8 " номер месяца, в котором был максимум продаж";
+
     }
 }
