@@ -1,7 +1,5 @@
 package ru.netology.stats.Stats.services;
 
-import com.sun.source.doctree.SummaryTree;
-
 import java.util.stream.LongStream;
 
 public class StatsService {
@@ -28,12 +26,6 @@ public class StatsService {
 
         return minMonth + 1; // месяца нумеруются с 1, а индексы массива с 0, нужно сдвинуть ответ на 1
     }
-
-    public int getMinSales(long[] sales) {
-        int minMonth = getMinSalesMonth(sales);
-        return (int) sales[minMonth];
-    }
-
     public long getSummaAllSales(long[] sales) {
         long sum;
         sum = LongStream.of(sales).sum();
@@ -42,10 +34,35 @@ public class StatsService {
     }
 
     public long getAverageSalesOfMonth(long[] sales) {
-long average;
-int month =12;
-average = LongStream.of(sales).sum()/ month;
+        long average;
+        int month = 12;
+        average = LongStream.of(sales).sum() / month;
 
-return average; // средняя сумма продаж в месяц;
+        return average; // средняя сумма продаж в месяц;
+    }
+
+    public int getNumberMonthSalesBelowAverage(long[] sales) {
+        int month = 0;
+        long average = getAverageSalesOfMonth(sales);
+
+        for (int i = 0; i < sales.length; i++) {
+            if (sales[i] < average) { // значит, в рассматриваемом i-м месяце продаж меньше среднего
+                month++; // запомним его и посчитаем!
+            }
+        }
+        return month;
+    }
+
+    public int getNumberMonthSalesAboveAverage(long[] sales) {
+        int month = 0;
+        long average = getAverageSalesOfMonth(sales);
+
+        for (int i = 0; i < sales.length; i++) {
+            if (sales[i] > average) { // значит, в рассматриваемом i-м месяце продаж меньше среднего
+                month++; // запомним его и посчитаем!
+            }
+        }
+        return month;
     }
 }
+

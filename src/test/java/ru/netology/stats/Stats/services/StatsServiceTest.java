@@ -34,14 +34,34 @@ public class StatsServiceTest {
         long actualSummaAllSales = service.getSummaAllSales(sales);
         Assertions.assertEquals(expectedSummaAllSales, actualSummaAllSales);
     }
-@Test
-public void shouldFindAverageSalesOfMonth() {
-    StatsService service = new StatsService();
-    long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-    long expectedAverageSalesOfMonth = (8 + 15 + 13 + 15 + 17 + 20 + 19 + 20 + 7 + 14 + 14 + 18) / 12; //средняя сумма всех продаж в месяц
-    long actualAverageSalesOfMonth = service.getAverageSalesOfMonth(sales);
-    Assertions.assertEquals(expectedAverageSalesOfMonth, actualAverageSalesOfMonth);
+
+    @Test
+    public void shouldFindAverageSalesOfMonth() {
+        StatsService service = new StatsService();
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expectedAverageSalesOfMonth = (8 + 15 + 13 + 15 + 17 + 20 + 19 + 20 + 7 + 14 + 14 + 18) / 12; //средняя сумма всех продаж в месяц
+        long actualAverageSalesOfMonth = service.getAverageSalesOfMonth(sales);
+        Assertions.assertEquals(expectedAverageSalesOfMonth, actualAverageSalesOfMonth);
+    }
+
+    @Test
+    public void shouldFindNumberMonthSalesBelowAverage() {
+        StatsService service = new StatsService();
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expectedNumberMonthSalesBelowAverage = 5; // количество месяцев, в которых продажи были ниже среднего
+        long actualNumberMonthSalesBelowAverage = service.getNumberMonthSalesBelowAverage(sales);
+        Assertions.assertEquals(expectedNumberMonthSalesBelowAverage, actualNumberMonthSalesBelowAverage);
+    }
+
+    @Test
+    public void shouldFindNumberMonthSalesAboveAverage() {
+        StatsService service = new StatsService();
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expectedNumberMonthSalesAboveAverage = 5; // количество месяцев, в которых продажи были ниже среднего
+        long actualNumberMonthSalesAboveAverage = service.getNumberMonthSalesAboveAverage(sales);
+        Assertions.assertEquals(expectedNumberMonthSalesAboveAverage, actualNumberMonthSalesAboveAverage);
+    }
 }
-}
+
 
 
