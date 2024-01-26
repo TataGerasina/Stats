@@ -57,7 +57,7 @@ public class StatsServiceTest {
     public void shouldFindNumberMonthSalesAboveAverage() {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        long expectedNumberMonthSalesAboveAverage = 5; // количество месяцев, в которых продажи были ниже среднего
+        long expectedNumberMonthSalesAboveAverage = 5; // количество месяцев, в которых продажи были выше среднего
         long actualNumberMonthSalesAboveAverage = service.getNumberMonthSalesAboveAverage(sales);
         Assertions.assertEquals(expectedNumberMonthSalesAboveAverage, actualNumberMonthSalesAboveAverage);
     }

@@ -1,6 +1,5 @@
 package ru.netology.stats.Stats.services;
 
-import java.util.stream.LongStream;
 
 public class StatsService {
 
@@ -26,17 +25,25 @@ public class StatsService {
 
         return minMonth + 1; // месяца нумеруются с 1, а индексы массива с 0, нужно сдвинуть ответ на 1
     }
-    public long getSummaAllSales(long[] sales) {
-        long sum;
-        sum = LongStream.of(sales).sum();
 
+    public long getSummaAllSales(long[] sales) {
+        long sum = 0;
+
+        for (long i : sales) {
+            sum += i;
+        }
         return sum; //сумма всех продаж за 12 месяцев (с 0 до 11 в массиве)
     }
 
     public long getAverageSalesOfMonth(long[] sales) {
         long average;
         int month = 12;
-        average = LongStream.of(sales).sum() / month;
+        long sum = 0;
+
+        for (long i : sales) {
+            sum += i;
+        }
+        average = sum / month;
 
         return average; // средняя сумма продаж в месяц;
     }
@@ -58,11 +65,10 @@ public class StatsService {
         long average = getAverageSalesOfMonth(sales);
 
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] > average) { // значит, в рассматриваемом i-м месяце продаж меньше среднего
+            if (sales[i] > average) { // значит, в рассматриваемом i-м месяце продаж больше среднего
                 month++; // запомним его и посчитаем!
             }
         }
         return month;
     }
 }
-
